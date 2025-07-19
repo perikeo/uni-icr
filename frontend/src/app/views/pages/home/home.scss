@@ -1,0 +1,139 @@
+.hero .hero__graphic {
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  z-index: -1;
+  transform:translateY(-4%);
+}
+.hero {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+}
+.hero .hero__content {
+  margin-top: 6rem;
+}
+.hero .hero__content .hero__text .hero__title,
+.hero .hero__content .hero__text .hero__subtitle {
+  margin: 0;
+}
+.hero .hero__content .hero__text .hero__subtitle {
+  font-size: 1.5rem;
+  font-family: 'Nunito';
+  margin-bottom: 2.5rem;
+}
+
+.hero .hero__content,
+.hero .hero__content .hero__text,
+.hero .hero__content .hero__action {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+}
+
+.hero {
+  height: clamp(500px, 46vw, 1700px);
+}
+.hero .hero__content {
+  height: max-content;
+  padding-bottom: 4rem;
+}
+
+.hero .hero__content .hero__action {
+  margin-bottom: 7rem;
+}
+.hero .hero__content .hero__action .hero__search-form {
+  position: relative;
+  margin-bottom: 1.5rem;
+}
+.hero .hero__content .hero__action .hero__search-form button {
+  position: absolute;
+  right: 0.75rem;
+  top: 50%;
+  transform: translateY(-50%);
+}
+
+.hero .hero__content .hero__action .hero__search {
+  font-weight: 500;
+  padding: 1.5rem 2rem;
+  min-width: 620px;
+  max-width: 620px;
+  background-color: transparent;
+  border: 0.125rem solid var(--primary-blue-black);
+  border-radius: 5rem;
+}
+
+.hero .hero__content .hero__social-proof {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  width: 100%;
+  column-gap: 2.25rem;
+}
+
+.hero .hero__content .hero__social-proof .social-proof__logo {
+  max-height: 2rem;
+}
+.hero .hero__content .hero__social-proof .social-proof__text {
+  font-size: 1.125rem;
+  font-weight: 800;
+  font-family: 'Nunito';
+}
+
+.hero .hero__graphic .hero__graphic-dog {
+  position: absolute;
+  z-index: 1;
+  width: 750px;
+  height: auto;
+  top: 13%;
+  right: 0;
+}
+
+
+
+
+
+.social-proof__hero .social-proof__container {
+  width: 100%;
+  background-color: var(--primary-blue-regular);
+  padding: 1.875rem;
+  height: max-content;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  
+}
+.social-proof__hero .social-proof__container .social-proof__text {
+  
+}
+.social-proof__hero .social-proof__container .social-proof__logo-container {
+
+}
+
+
+@media (width <= 1920px) {
+    .hero .hero__graphic .hero__graphic-dog {
+    position: absolute;
+    z-index: 1;
+    width: 620px;
+    height: auto;
+    top: 8%;
+    right: 0;
+  }
+
+}
+
+@media (width <= 1400px) {
+    .hero .hero__graphic .hero__graphic-dog {
+    position: absolute;
+    z-index: 1;
+    width: 450px;
+    height: auto;
+    top: 8%;
+    right: 0;
+  }
+
+}

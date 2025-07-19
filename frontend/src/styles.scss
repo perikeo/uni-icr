@@ -1,1 +1,95 @@
 /* You can add global styles to this file, and also import other style files */
+@import url('https://fonts.googleapis.com/css2?family=Inter:ital,opsz,wght@0,14..32,100..900;1,14..32,100..900&family=Nunito:ital,wght@0,200..1000;1,200..1000&display=swap');
+
+:root {
+  --primary-blue-black: #10162D;
+  --primary-blue-dark: #1B244B;
+  --primary-blue-regular: #232F61;
+  --primary-cream-regular: #FFFCF5;
+
+  --secondary-light-white: #ffffff;
+  --secondary-light-purple: #96A4DA;
+  --secondary-light-purple-adjustable-opacity: 150, 164, 218;
+  --secondary-purple: #8297E9;
+
+  --button-normal: #232F61;
+  --button-hover: #161D3C;
+  --button-active: #3E54AC;
+}
+body, html {
+  margin: 0;
+  padding: 0;
+}
+* {
+  font-size: 16px;
+  box-sizing: border-box;
+}
+
+*:not(h1,h2,h3,h4,h5,h6, button) {
+  font-family: 'Inter';
+}
+*:not(svg, img, div, main, section, article) {
+  color: var(--primary-blue-black);
+}
+h1, h2, h3, h4, h5, h6, button, a[data-button='true'] {
+  font-family: 'Nunito';
+}
+
+h1, h2 {
+  font-weight: 800;
+}
+h1 {
+  font-size: 3.25rem;
+}
+
+h2 {
+  font-size: 2.25rem;
+}
+
+svg > use {
+  width: 100%;
+  height: 100%;
+}
+
+a {
+  cursor: pointer;
+}
+
+
+a[data-button='true'],
+button {
+  text-decoration: none;
+  font-weight: 800;
+  padding: 0.875rem 2rem;
+  border-radius: 100px;
+  border: none;
+  background-color: var(--button-normal);
+  color: var(--secondary-light-white);
+  cursor: pointer;
+}
+a[data-button='true']:hover,
+button:hover {
+  background-color: var(--button-hover);
+}
+a[data-button='true']:active,
+button:active {
+  background-color: var(--button-active);
+}
+
+button.small {
+  padding-top: 0.625rem;
+  padding-bottom: 0.625rem;
+}
+
+.button-icon {
+  padding: 0.875rem 1rem;
+  font-size: 0.5rem;
+  width: max-content;
+  height: max-content;
+  border-radius: 100%;
+}
+
+
+p, span, h1, h2, h3, h4, h5, h6, a, button {
+  user-select: none;
+}

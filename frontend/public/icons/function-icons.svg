@@ -1,0 +1,9 @@
+<svg fill="currentColor" xmlns="http://www.w3.org/2000/svg" preserveAspectRatio="xMinYMin meet">
+
+  <symbol id="search" viewBox="0 0 20 20" fill="none" xmlns="http://www.w3.org/2000/svg">
+    <path d="M18.6429 18.9168L14.5 14.7739M9.11905 17.012C13.327 17.012 16.7381 13.6008 16.7381 9.39294C16.7381 5.18506 13.327 1.7739 9.11905 1.7739C4.91117 1.7739 1.5 5.18506 1.5 9.39294C1.5 13.6008 4.91117 17.012 9.11905 17.012Z" stroke="#F7F3EB" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+  </symbol>
+
+
+  
+</svg>

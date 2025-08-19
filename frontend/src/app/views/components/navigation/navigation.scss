@@ -1,4 +1,9 @@
-
+:host(.navigation--transparent) .navigation__bottom {
+  display: none;
+}
+:host(.navigation--transparent) .navigation__body {
+  background-color: transparent;
+}
 
 .body__nav-links,
 .navigation__head,
@@ -15,7 +20,6 @@
 .navigation__body {
   justify-content: space-between;
 }
-
 .navigation__head svg,
 .navigation__head svg use,
 .navigation__body svg,
@@ -26,102 +30,77 @@
 .navigation {
   height: max-content;
 }
-
-.navigation__head {
-  background-color: var(--primary-blue-regular);
-  height: 40px;
-}
-.navigation__head span {
-  font-size: 0.875rem;
-  font-weight: 800;
-  text-decoration: underline;
-  color: var(--secondary-light-white);
-}
-
-.navigation__head svg {
-  width: 214px;
-}
-.navigation__head svg use {
-  fill: var(--primary-cream-regular);
-}
-
+    .navigation__head {
+      background-color: var(--primary-blue-regular);
+      height: 40px;
+    }
+    .navigation__head span {
+      font-size: 0.875rem;
+      font-weight: 800;
+      text-decoration: underline;
+      color: var(--secondary-white-light);
+    }
+    .navigation__head svg {
+      width: 214px;
+    }
+    .navigation__head svg use {
+      fill: var(--primary-cream-regular);
+    }
 .navigation,
 .navigation__body,
 .navigation__bottom svg, 
 .navigation__bottom svg use {
   width: 100%;
 } 
-
 .navigation__body {
   height: 80px;
   padding: 1rem 4rem;
   background-color: var(--primary-cream-regular);
 }
-.body__logo {
-  height: 100%;
-}
+    .body__logo {
+      height: 100%;
+    }
+    .body__nav-links,
+    .body__action-buttons {
+      column-gap: 20px;
+    }
+    .body__nav-links a {
+      opacity: 0.8;
+    }
+    .body__logo,
+    .body__action-buttons {
+      width: 330px;
+    }
+    .body__action-buttons {
+      justify-content: flex-end;
+    }
+    .body__action-buttons span {
+      font-family: 'Nunito';
+    }
+    .body__action-buttons > a {
+      display: flex;
+      align-items: center;
+      column-gap: 9px;
+    }
+    .body__action-buttons > a,
+    .body__action-buttons > a:active,
+    .body__action-buttons > a:focus {
+      text-decoration: none;
+      color: initial;
 
-.body__nav-links,
-.body__action-buttons {
-  column-gap: 20px;
-}
-
-.body__nav-links a {
-  opacity: 0.8;
-}
-
-.body__logo,
-.body__action-buttons {
-  width: 330px;
-}
-
-.body__action-buttons {
-  justify-content: flex-end;
-}
-
-.body__action-buttons span {
-  font-family: 'Nunito';
-}
-
-.body__action-buttons > a {
-  display: flex;
-  align-items: center;
-  column-gap: 9px;
-}
-.body__action-buttons > a,
-.body__action-buttons > a:active,
-.body__action-buttons > a:focus {
-  text-decoration: none;
-  color: initial;
-
-}
-
-.body__action-buttons > a svg + span > span {
-  font-weight: 800;
-  text-decoration: underline;
-  opacity: 0.9;
-}
-
-.body__action-buttons > a svg {
-  width: 18px;
-  height: 18px;
-}
-
-
+    }
+    .body__action-buttons > a svg + span > span {
+      font-weight: 800;
+      text-decoration: underline;
+      opacity: 0.9;
+    }
+    .body__action-buttons > a svg {
+      width: 18px;
+      height: 18px;
+    }
 .navigation__bottom {
   height: 70px;
 }
-.navigation__bottom svg {
-  height: 100%;
-}
-
-
-
-
-
-
-/*
-.navigation__body svg use {
-  fill: var(--primary-blue-dark);
-}
-*/
+    .navigation__bottom svg {
+      height: 100%;
+    }

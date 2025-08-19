@@ -7,14 +7,23 @@
   --primary-blue-regular: #232F61;
   --primary-cream-regular: #FFFCF5;
 
-  --secondary-light-white: #ffffff;
-  --secondary-light-purple: #96A4DA;
-  --secondary-light-purple-adjustable-opacity: 150, 164, 218;
+  --secondary-white-light: #ffffff;
+  --secondary-purple-light-max: #E1E6F9; 
+  --secondary-purple-light: #96A4DA;
+  --secondary-purple-light-adjustable-opacity: 150, 164, 218;
   --secondary-purple: #8297E9;
+  --secondary-purple-dark: #5C77E0;
 
-  --button-normal: #232F61;
-  --button-hover: #161D3C;
-  --button-active: #3E54AC;
+  --button-primary-normal: var(--primary-blue-regular);
+  --button-primary-hover: #161D3C;
+  --button-primary-active: #3E54AC;
+
+  --button-secondary-normal: var(--secondary-white-light);
+  --button-secondary-hover: var(--secondary-purple-dark);
+  --button-secondary-active: var(--secondary-purple-light);
+
+
+  --box-shadow-gentle: 150, 164, 218;
 }
 body, html {
   margin: 0;
@@ -46,6 +55,11 @@ h2 {
   font-size: 2.25rem;
 }
 
+section {
+  padding: 2rem 6.875rem;
+  overflow: hidden;
+}
+
 svg > use {
   width: 100%;
   height: 100%;
@@ -60,25 +74,84 @@ a[data-button='true'],
 button {
   text-decoration: none;
   font-weight: 800;
-  padding: 0.875rem 2rem;
+  padding: 0.875rem 2.25rem;
   border-radius: 100px;
   border: none;
-  background-color: var(--button-normal);
-  color: var(--secondary-light-white);
+  background-color: var(--button-primary-normal);
+  color: var(--secondary-white-light);
   cursor: pointer;
 }
 a[data-button='true']:hover,
 button:hover {
-  background-color: var(--button-hover);
+  background-color: var(--button-primary-hover);
 }
 a[data-button='true']:active,
 button:active {
-  background-color: var(--button-active);
+  background-color: var(--button-primary-active);
 }
 
 button.small {
   padding-top: 0.625rem;
   padding-bottom: 0.625rem;
+}
+button.secondary {
+  color: var(--primary-blue-regular);
+  background-color: var(--secondary-white-light);
+  border: 1px solid var(--secondary-purple-dark);
+}
+button.secondary:hover {
+  background-color: var(--secondary-purple-dark);
+  color: var(--secondary-white-light);
+}
+button.secondary:active {
+  background-color: var(--secondary-purple-light);
+  color: var(--secondary-white-light);
+  border-color: var(--secondary-purple-light);
+}
+a[data-button='true']:hover,
+button:hover,
+a[data-button='true'],
+button,
+button.secondary,
+button.secondary:hover {
+  transition: all 175ms ease;
+}
+a[data-button='true']:active,
+button:active,
+button.secondary:active {
+  transition: all 75ms ease;
+}
+
+.input input,
+.input select,
+.input button {
+  border: none;
+}
+.input input:focus,
+.input select:focus,
+.input button:focus {
+  outline: none;
+}
+.input button:hover {
+  background-color: var(--secondary-purple-light-max);
+}
+.input {
+  background-color: var(--secondary-white-light);
+  color: var(--primary-blue-black);
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  width: max-content;
+
+  height: 60px;
+  border: 1px solid var(--primary-blue-black);
+  border-radius: 3rem;
+}
+.input * {
+  border-radius: 3rem;
+}
+.input *:not(button) {
+    padding: 0.875rem 1rem 1rem 1rem;
 }
 
 .button-icon {

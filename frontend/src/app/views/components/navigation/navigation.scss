@@ -20,10 +20,7 @@
 .navigation__body {
   justify-content: space-between;
 }
-.navigation__head svg,
-.navigation__head svg use,
-.navigation__body svg,
-.navigation__body svg use {
+.navigation__head img {
   height: 100%;
 }
 
@@ -40,16 +37,13 @@
       text-decoration: underline;
       color: var(--secondary-white-light);
     }
-    .navigation__head svg {
+    .navigation__head img {
       width: 214px;
     }
-    .navigation__head svg use {
-      fill: var(--primary-cream-regular);
-    }
+
 .navigation,
 .navigation__body,
-.navigation__bottom svg, 
-.navigation__bottom svg use {
+.navigation__bottom img{
   width: 100%;
 } 
 .navigation__body {
@@ -89,18 +83,18 @@
       color: initial;
 
     }
-    .body__action-buttons > a svg + span > span {
+    .body__action-buttons > a img + span > span {
       font-weight: 800;
       text-decoration: underline;
       opacity: 0.9;
     }
-    .body__action-buttons > a svg {
+    .body__action-buttons > a img {
       width: 18px;
       height: 18px;
     }
 .navigation__bottom {
   height: 70px;
 }
-    .navigation__bottom svg {
+    .navigation__bottom img {
       height: 100%;
     }

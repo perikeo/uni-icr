@@ -332,7 +332,7 @@ section.favorite-breeds .favorite-breeds__title-container {
       transform: translateY(-1rem);
     }
     section.favorite-breeds .favorite-breeds__card:hover .favorite-breeds__card-title-container h3,
-    section.favorite-breeds .favorite-breeds__card:hover .favorite-breeds__card-title-container svg {
+    section.favorite-breeds .favorite-breeds__card:hover .favorite-breeds__card-title-container {
       color: var(--secondary-purple-dark);
       --icon-color: var(--secondary-purple-dark);
     }

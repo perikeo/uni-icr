@@ -15,9 +15,18 @@
                     <option value="price-desc">Most Popular</option>
                     <option value="price-desc">Best Rated</option>
                 </select>
+                <i class="icon" [style.width.px]="10" [style.height.px]="7" [innerHTML]="`${cdn}/icons/functional/dropdown.svg` | fetchAsset "></i>
             </div>
             <div class="input">
-                <button class="input">Filters <i href=""></i></button>
+                <lp-select class="grid-header__sort"
+                [options]="sortOptions"
+                placeholder="Sort By"
+                [(ngModel)]="sort"
+                (valueChange)="onSort(sort)">
+                </lp-select>
+            </div>
+            <div class="input">
+                <button>Filters <i class="icon" [style.width.px]="17" [style.height.px]="12" [innerHTML]="`${cdn}/icons/functional/filter.svg` | fetchAsset "></i></button>
             </div>
         </div>
     </section>

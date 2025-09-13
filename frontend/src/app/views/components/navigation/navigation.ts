@@ -1,4 +1,5 @@
 import { Component } from '@angular/core';
+import { GlobalConstants } from '../../../common/global-constants';
 
 @Component({
   selector: 'app-navigation',
@@ -8,5 +9,6 @@ import { Component } from '@angular/core';
   styleUrl: './navigation.scss'
 })
 export class Navigation {
-
+  public cdn = GlobalConstants.cdn;
+  
 }

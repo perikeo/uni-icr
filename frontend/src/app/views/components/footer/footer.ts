@@ -1,4 +1,5 @@
 import { Component } from '@angular/core';
+import { GlobalConstants } from '../../../common/global-constants';
 
 @Component({
   selector: 'app-footer',
@@ -8,5 +9,7 @@ import { Component } from '@angular/core';
   styleUrl: './footer.scss'
 })
 export class Footer {
+  public cdn = GlobalConstants.cdn;
+
   currentYear = new Date().getFullYear();
 }

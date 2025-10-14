@@ -33,6 +33,24 @@
     overflow: hidden;
     transition: width 300ms ease-in-out;
 }
+#filter__menu .filter__body {
+    display: flex;
+    flex-direction: column;
+}
+#filter__menu filter-accordion {
+    display: block;
+}
+#filter__menu filter-accordion + filter-accordion {
+    margin-top: 0.25rem;
+}
+#filter__menu .filter__footer {
+    margin-top: 1.5rem;
+}
+#filter__menu .filter__footer .button {
+    width: 100%;
+    justify-content: center;
+    column-gap: 0.5rem;
+}
 #filter__menu .filter__header {
     display: flex;
     align-items: center;

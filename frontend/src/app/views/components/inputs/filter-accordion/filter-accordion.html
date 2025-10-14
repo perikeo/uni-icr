@@ -1,0 +1,37 @@
+<section class="filter-accordion">
+  <button
+    type="button"
+    class="filter-accordion__trigger"
+    (click)="toggle()"
+    [attr.aria-expanded]="expanded()"
+    [attr.aria-controls]="contentId">
+    <span class="filter-accordion__label">
+      {{ title }}
+      <span *ngIf="selectedCount() > 0" class="filter-accordion__label-count">
+        ({{ selectedCount() }})
+      </span>
+    </span>
+    <span class="filter-accordion__chevron" [class.is-open]="expanded()" aria-hidden="true"></span>
+  </button>
+
+  @if (expanded()) {
+    <div
+      class="filter-accordion__panel"
+      [id]="contentId"
+      role="region"
+      [attr.aria-label]="title">
+      <div
+        class="filter-accordion__option"
+        *ngFor="let option of options; trackBy: trackByValue">
+        <label>
+          <input
+            type="checkbox"
+            [checked]="isSelected(option.value)"
+            (change)="onOptionToggle(option.value, $event.target.checked)"
+            [disabled]="option.disabled ?? false">
+          <span>{{ option.label }}</span>
+        </label>
+      </div>
+    </div>
+  }
+</section>

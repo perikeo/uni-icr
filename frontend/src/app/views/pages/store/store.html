@@ -2,36 +2,159 @@
     <section id="grid-header">
         <h1>[FILTER TEXT]</h1>
         <div class="grid-header__actions">
-            <div class="input">
-                <input type="text" placeholder="Cocker Spaniel" class="grid-header__search"><i href=""></i>
+            <div class="input search">
+                <input type="text" placeholder="Cocker Spaniel" class="grid-header__search"><button class="button-icon"><div class="icon" [style.width.px]="22" [style.height.px]="22" [innerHTML]="`${cdn}/icons/functional/functional-search.svg` | fetchAsset "></div></button>
             </div>
-            <div class="input">
-                <select class="grid-header__sort">
-                    <option value="default">Sort By</option>
-                    <option value="price-asc">Sort By Price - Asc</option>
-                    <option value="price-desc">Sort By Price - Desc</option>
-                    <option value="price-desc">Youngest</option>
-                    <option value="price-desc">Oldest</option>
-                    <option value="price-desc">Most Popular</option>
-                    <option value="price-desc">Best Rated</option>
-                </select>
-                <i class="icon" [style.width.px]="10" [style.height.px]="7" [innerHTML]="`${cdn}/icons/functional/dropdown.svg` | fetchAsset "></i>
+            <div class="input dropdown">
+                <custom-select id="store-sort" [options]="options" [(ngModel)]="selectedOption" [checkmark]="true" optionLabel="label"  [showClear]="true" placeholder="Select a City"/>
             </div>
-            <div class="input">
-                <lp-select class="grid-header__sort"
-                [options]="sortOptions"
-                placeholder="Sort By"
-                [(ngModel)]="sort"
-                (valueChange)="onSort(sort)">
-                </lp-select>
-            </div>
-            <div class="input">
-                <button>Filters <i class="icon" [style.width.px]="17" [style.height.px]="12" [innerHTML]="`${cdn}/icons/functional/filter.svg` | fetchAsset "></i></button>
+            <div class="input filter">
+                <button (click)="toggleFilterMenu();"><span>Show filters</span><i class="icon" [style.width.px]="17" [style.height.px]="12" [innerHTML]="`${cdn}/icons/functional/filter.svg` | fetchAsset "></i></button>
             </div>
         </div>
     </section>
 
-    <section id="grid-content">
+    <section id="grid-content"> 
+
+        <aside id="filter__menu" [class.active]="filterMenuActive()">
+            <div class="filter__header">
+                <h2>Filters <span class="filter-text__filter-count"></span></h2>
+                <div class="container__two-elements">
+                    <p id="clear-filters" (click)="clearFilters();">Clear All</p>
+                    <button class="button-icon close" (click)="toggleFilterMenu();"><div class="icon" [style.width.px]="20" [style.height.px]="20" [innerHTML]="`${cdn}/icons/functional/close.svg` | fetchAsset "></div></button>
+                </div>
+            </div>
+            <div class="filter__body">
+
+                <div class="filter-group">
+                    <h3>Breed</h3>
+                    <div class="filter-group__options">
+                        <div class="checkbox">
+                            <input type="checkbox" id="breed-cocker-spaniel" name="breed-cocker-spaniel">
+                            <label for="breed-cocker-spaniel">Cocker Spaniel</label>
+                        </div>
+                        <div class="checkbox">
+                            <input type="checkbox" id="breed-doberman" name="breed-doberman">
+                            <label for="breed-doberman">Doberman</label>
+                        </div>
+                        <div class="checkbox">
+                            <input type="checkbox" id="breed-dachshund" name="breed-dachshund">
+                            <label for="breed-dachshund">Dachshund</label>
+                        </div>
+                        <div class="checkbox">
+                            <input type="checkbox" id="breed-boerboel" name="breed-boerboel">
+                            <label for="breed-boerboel">Boerboel</label>
+                        </div>
+                        <div class="checkbox">
+                            <input type="checkbox" id="breed-french-bulldog" name="breed-french-bulldog">
+                            <label for="breed-french-bulldog">French Bulldog</label>
+                        </div>
+                        <div class="checkbox">
+                            <input type="checkbox" id="breed-papillon" name="breed-papillon">
+                            <label for="breed-papillon">Papillon</label>
+                        </div>
+                        <div class="checkbox">
+                            <input type="checkbox" id="breed-golden-retriever" name="breed-golden-retriever">
+                            <label for="breed-golden-retriever">Golden Retriever</label>
+                        </div>
+                        <div class="checkbox">
+                            <input type="checkbox" id="breed-husky" name="breed-husky">
+                            <label for="breed-husky">Husky</label>
+                        </div>
+                        <div class="checkbox">
+                            <input type="checkbox" id="breed-wolfdog" name="breed-wolfdog">
+                            <label for="breed-wolfdog">Wolfdog</label>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="filter-group">
+                    <h3>Gender</h3>
+                    <div class="filter-group__options">
+                        <div class="checkbox">
+                            <input type="checkbox" id="gender-boy" name="gender-boy">
+                            <label for="gender-boy">Boy</label>
+                        </div>
+                        <div class="checkbox">
+                            <input type="checkbox" id="gender-girl" name="gender-girl">
+                            <label for="gender-girl">Girl</label>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="filter-group">
+                    <h3>Age</h3>
+                    <div class="filter-group__options">
+                        <div class="checkbox">
+                            <input type="checkbox" id="age-pup" name="age-pup">
+                            <label for="age-pup">0.5 years - 1.5 years</label>
+                        </div>
+                        <div class="checkbox">
+                            <input type="checkbox" id="age-young" name="age-young">
+                            <label for="age-young">1.5 years - 3 years</label>
+                        </div>
+                        <div class="checkbox">
+                            <input type="checkbox" id="age-adult" name="age-adult">
+                            <label for="age-adult">3 years - 7 years</label>
+                        </div>
+                        <div class="checkbox">
+                            <input type="checkbox" id="age-senior" name="age-senior">
+                            <label for="age-senior">7+ years</label>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="filter-group">
+                    <h3>Size</h3>
+                    <div class="filter-group__options">
+                        <div class="checkbox">
+                            <input type="checkbox" id="size-small" name="size-small">
+                            <label for="size-small">Small</label>
+                        </div>
+                        <div class="checkbox">
+                            <input type="checkbox" id="size-medium" name="size-medium">
+                            <label for="size-medium">Medium</label>
+                        </div>
+                        <div class="checkbox">
+                            <input type="checkbox" id="size-large" name="size-large">
+                            <label for="size-large">Large</label>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="filter-group">
+                    <h3>Price</h3>
+                    <div class="filter-group__options">
+                        <div class="checkbox">
+                            <input type="checkbox" id="price-low" name="price-low">
+                            <label for="price-low">€0 - €150</label>
+                        </div>
+                        <div class="checkbox">
+                            <input type="checkbox" id="price-medium" name="price-medium">
+                            <label for="price-medium">€150 - €500</label>
+                        </div>
+                        <div class="checkbox">
+                            <input type="checkbox" id="price-high" name="price-high">
+                            <label for="price-high">€500 - €1250</label>
+                        </div>
+                        <div class="checkbox">
+                            <input type="checkbox" id="price-very-high" name="price-very-high">
+                            <label for="price-very-high">€1250+</label>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="filter__footer">
+                    <button class="button button--primary" (click)="applyFilters();">Show Products <span class="filter-text__product-count"></span></button>
+                </div>
+
+            </div>
+
+        </aside>
+
+        <div class="grid__items">
+            
+        </div>
 
     </section>
 

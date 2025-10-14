@@ -1,0 +1,17 @@
+<p-select
+  appendTo="body"
+  [options]="options"
+  [optionLabel]="optionLabel"
+  [showClear]="showClear"
+  [checkmark]="checkmark"
+  [placeholder]="placeholder"
+  [disabled]="disabled"
+  [(ngModel)]="value"
+  (ngModelChange)="handleModelChange($event)"
+  (onBlur)="handleBlur()"
+  (onShow)="toggleBorderRadius(true); rotateIcon(true);"
+  (onHide)="toggleBorderRadius(false); rotateIcon(false);">
+    <ng-template #dropdownicon>
+      <div class="icon" [style.width.px]="10" [style.height.px]="7" [innerHTML]="`${cdn}/icons/functional/dropdown.svg` | fetchAsset "></div>
+    </ng-template>
+</p-select>

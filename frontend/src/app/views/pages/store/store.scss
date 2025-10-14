@@ -1,6 +1,6 @@
-#grid {
+#grid-content {
     width: 100%;
-    max-width: 1440px;
+    //max-width: 1440px;
     margin: 0 auto;
     margin-top: 4.5rem;
 }
@@ -9,4 +9,59 @@
     display: flex;
     align-items: center;
     justify-content: space-between;
+}
+
+.input.filter button span {
+    min-width: 90px;
+}
+
+.grid-header__actions {
+    display: flex;
+    align-items: center;
+    gap: 1rem;
+}
+#store-sort {
+    min-width: 200px;
+}
+
+#filter__menu {
+
+    // On click gets set to "width: 17.5%;" at #filter__menu.active
+    width: 0%;
+    display: flex;
+    flex-direction: column;
+    overflow: hidden;
+    transition: width 300ms ease-in-out;
+}
+#filter__menu .filter__header {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 1rem;
+}
+#filter__menu.active {
+
+    width: 17.5%;
+    display: flex;
+    transition: width 300ms ease-in-out;
+}
+.filter-text__filter-count {
+    font-weight: 600;
+}
+#clear-filters {
+    cursor: pointer;
+    color: var(--color-primary);
+    font-weight: 600;
+    opacity: 0.50;
+    text-decoration: underline;
+}
+#clear-filters:hover {
+    color: var(--input-active);
+    opacity: 1;
+    transition: all 150ms ease-in-out;
+}
+#clear-filters:active {
+    color: var(--input-clicked);
+    transition: none;
 }

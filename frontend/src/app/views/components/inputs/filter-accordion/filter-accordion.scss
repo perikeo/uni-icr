@@ -1,0 +1,119 @@
+:host {
+  display: block;
+}
+
+.filter-accordion {
+  border-top: 1px solid rgba( var(--primary-blue-black-adjustable-opacity) , 0.25);
+  padding: 0;
+}
+
+.filter-accordion__trigger {
+  width: 100%;
+  
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  column-gap: 1rem;
+
+  padding-block: 1.5rem;
+  background: transparent;
+  border: none;
+  outline: none;
+  border-radius: 0;
+  color: inherit;
+  font: inherit;
+  font-weight: 600;
+  cursor: pointer;
+}
+.filter-accordion__trigger,
+.filter-accordion__panel {
+    padding-inline: 0.5rem;
+}
+
+.filter-accordion .filter-accordion__trigger:hover {
+  color: var(--primary-blue-regular);
+}
+
+.filter-accordion__label {
+
+    display: inline-flex;
+    align-items: baseline;
+    column-gap: 0.25rem;
+}
+
+.filter-accordion__label-count {
+
+    font-weight: 500;
+}
+
+.filter-accordion__chevron {
+    transition: transform 250ms ease-in-out;
+}
+
+.filter-accordion__chevron.is-open {
+    transform: rotateX(180deg);
+    transition: transform 250ms ease-in-out;
+}
+
+.filter-accordion__panel {
+
+    display: flex;
+    flex-direction: column;
+    overflow: hidden;
+    max-height: 1000px;
+    padding-top: 0.5rem;
+    padding-bottom: 1rem;
+
+    transform-origin: top;
+    will-change: max-height;
+    transition: max-height 200ms cubic-bezier(0,0,.2,1);
+}
+.filter-accordion .filter-accordion__trigger[aria-expanded='false'] + .filter-accordion__panel {
+
+    max-height: 0;
+    padding: 0;
+    transition: 
+      max-height 200ms cubic-bezier(.4,0,1,1),
+      padding 200ms ease-in-out 75ms;
+}
+
+button.filter-accordion__trigger[aria-expanded='true'] + .filter-accordion__panel .filter-accordion__option {
+    opacity: 1;
+}
+
+button.filter-accordion__trigger[aria-expanded='false'] + .filter-accordion__panel .filter-accordion__option {
+    opacity: 0;
+    transition: opacity 75ms ease-in-out;
+}
+
+.filter-accordion__option label {
+
+    width: 100%;
+    display: inline-flex;
+    align-items: center;
+    column-gap: 0.75rem;
+    cursor: pointer;
+    font-weight: 500;
+    padding-block: 0.375rem;
+}
+
+.filter-accordion__option label span {
+  font-weight: 500;
+  opacity: 1;
+}
+.filter-accordion__option:hover label span {
+
+  color: var(--input-active);
+  opacity: 0.8;
+}
+
+.filter-accordion__trigger:hover label {
+  
+  color: var(--input-active);
+}
+
+.filter-accordion__option label,
+.filter-accordion__label-count, 
+.filter-accordion__label { 
+    width: max-content;
+}

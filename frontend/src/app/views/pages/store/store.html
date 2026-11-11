@@ -11,51 +11,65 @@
                 </button>
             </div>
             <div class="input dropdown">
-                <custom-select id="store-sort" [options]="options" [(ngModel)]="selectedOption" [checkmark]="true" optionLabel="label"  [showClear]="true" placeholder="Select a City"/>
+                <custom-select id="store-sort" [checkmark]="true" optionLabel="label" [showClear]="true" placeholder="Sort by"/>
             </div>
             <div class="input filter">
-                <button (click)="toggleFilterMenu();"><span>{{ filterMenuButtonLabel() }}</span><i class="icon" [style.width.px]="17" [style.height.px]="12" [innerHTML]="`${cdn}/icons/functional/filter.svg` | fetchAsset "></i></button>
+                <button><span></span><i class="icon" [style.width.px]="17" [style.height.px]="12" [innerHTML]="`${cdn}/icons/functional/filter.svg` | fetchAsset "></i></button>
             </div>
         </div>
-        <div></div>
+        <div class="grid-header__count">
+        </div>
     </section>
 
     <section id="grid-content"> 
 
-        <aside id="filter__menu" [class.active]="filterMenuActive()">
+        <aside id="filter__menu active">
             <div class="filter__header">
 
                 <div class="container__two-elements space-between">
                     <h2 class="filter__title">Filters</h2>
-                    <button class="button-icon close" (click)="toggleFilterMenu();"><div class="icon" [style.width.px]="20" [style.height.px]="20" [innerHTML]="`${cdn}/icons/functional/close.svg` | fetchAsset "></div></button>
+                    <button class="button-icon close"><div class="icon" [style.width.px]="20" [style.height.px]="20" [innerHTML]="`${cdn}/icons/functional/close.svg` | fetchAsset "></div></button>
                 </div>
 
                 <div class="container__two-elements space-between">
-                    <div class="filter-text__filter-count" 
-                    *ngIf="appliedFilterCount()"> ({{ appliedFilterCount() }} applied)</div>
-                    <p id="clear-filters"
-                    *ngIf="appliedFilterCount()" (click)="clearFilters();">Clear All</p>
+                    <div class="filter-text__filter-count"></div>
+                    <p id="clear-filters">Clear All</p>
                 </div>
 
             </div>
             <div class="filter__body">
                 
-                @for (group of filterGroups; track group.key) {
-                    <filter-accordion
-                        [title]="group.title"
-                        [options]="group.options"
-                        [startExpanded]="group.startExpanded ?? true"
-                        [selectedValues]="filters()[group.key]"
-                        (selectedValuesChange)="onFilterSelectedValuesChange(group.key, $event)">
-                    </filter-accordion>
-                }
+
 
             </div>
 
         </aside>
 
         <div class="grid__items">
-            
+            <!-- Loading state -->
+            <div class="grid__loading">
+                <div class="loading-spinner"></div>
+                <p>Loading puppies...</p>
+            </div>
+
+            <!-- Error state -->
+            <div class="grid__error" style="display: none;">
+                <p></p>
+                <button>Try Again</button>
+            </div>
+
+            <!-- Empty state -->
+            <div class="grid__empty" style="display: none;">
+                <div class="icon" [style.width.px]="64" [style.height.px]="64" [innerHTML]="cdn + '/icons/functional/paw.svg' | fetchAsset"></div>
+                <h3>No puppies found</h3>
+                <p>Try adjusting your filters to find more puppies.</p>
+                <button class="secondary">Clear Filters</button>
+            </div>
+
+            <!-- Dog cards grid -->
+            <div class="grid__cards">
+                
+            </div>
         </div>
 
     </section>

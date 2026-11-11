@@ -7,4 +7,5 @@ export const routes: Routes = [
   {path: 'home', redirectTo: '', pathMatch: 'full'},
   
   {path: 'store', component: Store},
+  // {path: 'store/:id', component: DogDetailPage},
 ];

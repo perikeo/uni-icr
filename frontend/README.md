@@ -1,59 +1,143 @@
-# Frontend
+# Exotic Petshop Frontend
 
-This project was generated using [Angular CLI](https://github.com/angular/angular-cli) version 20.0.0.
+> Angular 20 standalone SPA for the exotic pet marketplace.
 
-## Development server
+---
 
-To start a local development server, run:
-
-```bash
-ng serve
-```
-
-Once the server is running, open your browser and navigate to `http://localhost:4200/`. The application will automatically reload whenever you modify any of the source files.
-
-## Code scaffolding
-
-Angular CLI includes powerful code scaffolding tools. To generate a new component, run:
+## Quick Start
 
 ```bash
-ng generate component component-name
-```
+# Install dependencies
+npm install
 
-For a complete list of available schematics (such as `components`, `directives`, or `pipes`), run:
+# Start dev server (http://localhost:4200)
+npm start
 
-```bash
-ng generate --help
-```
+# Run tests
+ng test
 
-## Building
-
-To build the project run:
-
-```bash
+# Production build
 ng build
 ```
 
-This will compile your project and store the build artifacts in the `dist/` directory. By default, the production build optimizes your application for performance and speed.
+---
 
-## Running unit tests
+## Folder Structure
 
-To execute unit tests with the [Karma](https://karma-runner.github.io) test runner, use the following command:
+```
+src/app/
+├── common/                    # Shared utilities
+│   └── global-constants.ts    # CDN URLs, app-wide config
+├── pipe/ui/                   # UI pipes (asset-fetch)
+├── service/
+│   ├── api/dogs/              # Dog API service + DTOs
+│   ├── config/                # Configuration services
+│   └── ui/layout/             # Layout state service
+└── views/
+    ├── components/            # Reusable UI components
+    │   ├── dog-card/
+    │   ├── footer/
+    │   ├── inputs/            # Form controls (select, filter-accordion)
+    │   ├── navigation/
+    │   └── pagination/
+    └── pages/                 # Route-level pages
+        ├── home/
+        ├── store/
+        └── dog-detail/
+```
+
+---
+
+## Conventions
+
+### File Naming
+```
+home.ts, home.html, home.scss, home.spec.ts  ← NOT home.component.ts
+```
+
+### Components
+- **Standalone only** – no NgModules
+- **SCSS per component** – scoped styles
+- **Signals for state** – use Angular signals, not BehaviorSubjects
+
+### CDN Assets
+```typescript
+import { GlobalConstants } from '../../../common/global-constants';
+public cdn = GlobalConstants.cdn;
+// Template: {{ cdn + '/path/to/asset.svg' | fetchAsset }}
+```
+
+### Custom Form Controls
+Wrap PrimeNG with `ControlValueAccessor`. Use `custom-` selector prefix.
+
+---
+
+## Environment Configuration
+
+| Variable | Dev | Production |
+|----------|-----|------------|
+| `apiUrl` | `http://localhost:5223` | TBD |
+| `production` | `false` | `true` |
+
+Files: `src/environments/environment.ts`, `environment.production.ts`
+
+---
+
+## Pages
+
+| Route | Component | Description |
+|-------|-----------|-------------|
+| `/` | `Home` | Hero section, featured content |
+| `/store` | `Store` | Dog listings with filtering/pagination |
+| `/store/:id` | `DogDetail` | Individual dog details |
+
+---
+
+## API Integration
+
+The `DogsApi` service (`service/api/dogs/dogs-api.real.ts`) connects to the backend:
+
+```typescript
+@Injectable({ providedIn: 'root' })
+export class DogsApi {
+  getAll(params?: FilterParams): Observable<PaginatedResult<DogDto>>
+  getById(id: string): Observable<DogDto>
+  getFilterOptions(): Observable<FilterOptionsDto>
+}
+```
+
+---
+
+## Testing
 
 ```bash
+# Run all tests
 ng test
+
+# Run once (CI mode)
+ng test --no-watch --browsers=ChromeHeadless
+
+# With coverage
+ng test --code-coverage
 ```
 
-## Running end-to-end tests
+Test files live next to components: `home.spec.ts` alongside `home.ts`.
 
-For end-to-end (e2e) testing, run:
+---
 
-```bash
-ng e2e
-```
+## Dependencies
 
-Angular CLI does not come with an end-to-end testing framework by default. You can choose one that suits your needs.
+| Package | Purpose |
+|---------|---------|
+| PrimeNG | UI component library (Aura theme) |
+| @angular/forms | Reactive forms |
+| Karma/Jasmine | Unit testing |
 
-## Additional Resources
+---
 
-For more information on using the Angular CLI, including detailed command references, visit the [Angular CLI Overview and Command Reference](https://angular.dev/tools/cli) page.
+## Invariants
+
+- **No NgModules** – standalone components only
+- **Signals over BehaviorSubjects** – for local/UI state
+- **Design tokens** – use CSS variables (`--primary-*`, `--input-border-radius`)
+- **Backend required** – API calls expect `http://localhost:5223` running

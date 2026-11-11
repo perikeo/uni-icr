@@ -4,6 +4,8 @@
     //max-width: 1440px;
     margin: 0 auto;
     padding-top: 0;
+    display: flex;
+    align-items: flex-start;
 }
 #grid-header {
     width: 100%;
@@ -11,10 +13,17 @@
     align-items: center;
     justify-content: space-between;
 }
-#grid-header h1,
-#grid-header div:last-of-type {
+#grid-header h1 {
     width: 410px;
     flex-grow: 1;
+}
+#grid-header .grid-header__count {
+    width: 410px;
+    flex-grow: 1;
+    text-align: right;
+    font-weight: 600;
+    color: var(--primary-blue-black);
+    opacity: 0.7;
 }
 #grid-header .grid-header__actions {
     flex-grow: 1;
@@ -47,6 +56,7 @@
     // On click gets set to "width: 17.5%;" at #filter__menu.active
     width: 0%;
     max-width: 400px;
+    min-width: 0;
     display: flex;
     flex-direction: column;
     overflow: hidden;
@@ -56,11 +66,13 @@
     padding-block: 2rem;
     border-radius: 2rem;
     opacity: 0;
+    flex-shrink: 0;
 }
 #filter__menu.active {
 
     margin-right: 3rem;
-    width: 20%;
+    width: 400px;
+    min-width: 400px;
     transition: all 300ms ease-in-out;
 
     opacity: 1;
@@ -117,4 +129,117 @@
 
     margin: 0.25rem 0 0.25rem 0;
     padding-bottom: 0.5rem;
+}
+
+// Grid items container
+.grid__items {
+    flex: 1;
+    min-height: 400px;
+}
+
+.grid__cards {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 2rem;
+}
+
+// Loading state
+.grid__loading {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    min-height: 400px;
+    gap: 1rem;
+
+    p {
+        color: var(--primary-blue-black);
+        opacity: 0.7;
+    }
+}
+
+.loading-spinner {
+    width: 48px;
+    height: 48px;
+    border: 3px solid var(--secondary-purple-light-mid);
+    border-top-color: var(--secondary-purple-dark);
+    border-radius: 50%;
+    animation: spin 1s linear infinite;
+}
+
+@keyframes spin {
+    to { transform: rotate(360deg); }
+}
+
+// Error state
+.grid__error {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    min-height: 400px;
+    gap: 1rem;
+
+    p {
+        color: var(--primary-blue-black);
+        opacity: 0.7;
+    }
+}
+
+// Empty state
+.grid__empty {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    min-height: 400px;
+    gap: 1rem;
+    text-align: center;
+
+    .icon {
+        opacity: 0.3;
+    }
+
+    h3 {
+        margin: 0;
+        font-size: 1.5rem;
+        color: var(--primary-blue-black);
+    }
+
+    p {
+        margin: 0;
+        color: var(--primary-blue-black);
+        opacity: 0.7;
+    }
+}
+
+// Pagination section
+#grid-pagination {
+    display: flex;
+    justify-content: center;
+    padding-top: 2rem;
+    padding-bottom: 3rem;
+}
+
+// Responsive adjustments
+@media (max-width: 1200px) {
+    .grid__cards {
+        grid-template-columns: repeat(2, 1fr);
+    }
+}
+
+@media (max-width: 768px) {
+    .grid__cards {
+        grid-template-columns: 1fr;
+    }
+
+    #filter__menu.active {
+        width: 100%;
+        margin-right: 0;
+        margin-bottom: 2rem;
+    }
+
+    #grid-content {
+        flex-direction: column;
+    }
 }
